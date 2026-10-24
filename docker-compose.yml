@@ -1,0 +1,23 @@
+# nopCommerce local para practicar sin la verificación anti-bot del demo público.
+# Levantar:  docker compose up -d     -> http://localhost:8080
+# Apagar:    docker compose down      (los datos quedan guardados en el volumen)
+services:
+  nopcommerce:
+    image: nopcommerceteam/nopcommerce:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: nopCommerce_db_password
+      MYSQL_DATABASE: nopcommerce
+    volumes:
+      - nop_db:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  nop_db:
