@@ -24,7 +24,7 @@ def test_verify_css_locators(page:Page):
     page.locator("input.search-box-text[name=q]").fill("laptop")
     page.locator(".search-box-text[value='Search store']").fill("mac")
 
-def test_cssassignment(page:Page):
+def test_css_assignment(page:Page):
     page.goto("https://demowebshop.tricentis.com/")
     # Check logo
     expect(page.locator("img[alt='Tricentis Demo Web Shop']")).to_be_visible()
